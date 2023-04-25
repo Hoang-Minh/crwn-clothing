@@ -1,4 +1,4 @@
-import Categories from "../../categories/categories.component";
+import Categories from "../../components/categories/categories.component";
 
 const Home = () => {
   const categories = [
@@ -29,7 +29,11 @@ const Home = () => {
     },
   ];
 
-  return <Categories categories={categories}></Categories>;
+  return (
+    <div>      
+      <Categories categories={categories}></Categories>
+    </div>
+  )
 };
 
 export default Home;
