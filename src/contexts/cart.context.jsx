@@ -1,4 +1,12 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useReducer } from "react";
+
+export const CART_ITEM_ACTION_TYPES = {
+  ADD_CART_ITEM: "ADD_CART_ITEM",
+  REMOVE_CART_ITEM: "REMOVE_CART_ITEM",
+  CLEAR_CART_ITEM: "CLEAR_CART_ITEM",
+  TOGGLE_CART_OPEN: "TOGGLE_CART_OPEN"
+};
+
 
 export const addCartItem = (cartItems, productToAdd) => {
   const existingCartItem = cartItems.find(
@@ -43,6 +51,24 @@ export const CartContext = createContext({
   cartCount: 0,
   cartTotal: 0
 });
+
+
+export const INITIAL_STATE = {
+  isCartOpen: false,
+  cartItems: [],
+  cartCount: 0,
+  cartTotal: 0
+};
+
+const cartReducer = (state, action) => {
+
+  const {type, payload} = action;
+  switch(type) {
+
+    
+  }
+
+}
 
 export const CartProvider = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
