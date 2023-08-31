@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import {
   onAuthStateChangedListener,
   createUserDocumentFromAuth,
+  getCurrentUser,
 } from "./utils/firebase/firebase.utils";
 import { setCurrentUser } from "./store/user/user.action";
 
@@ -17,15 +18,10 @@ const App = () => {
   const dispatch = useDispatch();
   
   useEffect(() => {
-    const unsubscribe = onAuthStateChangedListener((user) => {
-      if (user) {
-        createUserDocumentFromAuth(user);
-      }
+    getCurrentUser().then(user => {
       
-      dispatch(setCurrentUser(user));
+      console.log(user);
     });
-
-    return unsubscribe;
   }, []); // dispatch coming from react-redux will be never changed. so it can be left out empty
 
 
